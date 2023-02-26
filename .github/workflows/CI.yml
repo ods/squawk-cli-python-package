@@ -26,9 +26,12 @@ jobs:
           override: true
       - name: Build wheels
         uses: PyO3/maturin-action@v1
+        env:
+          RUSTFLAGS: -C target-feature=+crt-static
         with:
-          target: ${{ matrix.target }}
-          args: --release --out dist -- -C target-feature=+crt-static
+          toolchain: 1.67.0
+          target: x86_64-unknown-linux-gnu
+          args: --release --out dist
           manylinux: auto
       - name: Upload wheels
         uses: actions/upload-artifact@v3
@@ -55,7 +58,8 @@ jobs:
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
-          target: ${{ matrix.target }}
+          toolchain: 1.67.0
+          target: x86_64-apple-darwin
           args: --release --out dist
       - name: Upload wheels
         uses: actions/upload-artifact@v3
