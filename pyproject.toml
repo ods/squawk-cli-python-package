@@ -4,6 +4,8 @@ build-backend = "maturin"
 
 [project]
 name = "squawk-cli"
+description = "Linter for PostgreSQL migrations"
+readme = "README.md"
 requires-python = ">=3.7"
 license = { file = "origin/LICENSE" }
 classifiers = [
