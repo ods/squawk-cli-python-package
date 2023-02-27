@@ -1,0 +1,22 @@
+version: '3.5'
+
+services:
+  x86_64:
+    build: .
+    platform: linux/x86_64
+    volumes:
+      - .:/src
+    working_dir: /src
+    environment:
+      RUSTFLAGS: "-C target-feature=+crt-static"
+    command: maturin build --release --out dist --target x86_64-unknown-linux-gnu
+
+  aarch64:
+    build: .
+    platform: linux/aarch64
+    volumes:
+      - .:/src
+    working_dir: /src
+    environment:
+      RUSTFLAGS: "-C target-feature=+crt-static"
+    command: maturin build --release --out dist --target aarch64-unknown-linux-gnu
