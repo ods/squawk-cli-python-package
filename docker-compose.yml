@@ -8,6 +8,8 @@ services:
       - .:/src
     working_dir: /src
     environment:
+      CARGO_HOME: /src/.cargo
+      CARGO_NET_GIT_FETCH_WITH_CLI: "true"
       RUSTFLAGS: "-C target-feature=+crt-static"
     command: maturin build --release --out dist --target x86_64-unknown-linux-gnu
 
@@ -18,5 +20,6 @@ services:
       - .:/src
     working_dir: /src
     environment:
+      CARGO_HOME: /src/.cargo
       RUSTFLAGS: "-C target-feature=+crt-static"
     command: maturin build --release --out dist --target aarch64-unknown-linux-gnu
