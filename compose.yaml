@@ -1,5 +1,3 @@
-version: '3.5'
-
 services:
   x86_64:
     build: .
